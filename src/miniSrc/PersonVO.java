@@ -2,30 +2,25 @@ package miniSrc;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.util.ArrayList;
 import java.util.Date;
-import java.util.HashMap;
 
 public class PersonVO {
 	private String 
 	user_id, user_pw, user_name, gender,
 	user_phone, user_email, photo, 
 	development, design, planning, specialty, 
-	location, portfoliofile, user_emblem, user_grade, p_id;
-	//유저와 프로젝트를 엮음
-	HashMap<String, HashMap<String, ProjectVO>> user_proj = new HashMap<>();
-	//프로젝트명으로 프로젝트 내용을 가져옴
-	HashMap<String, ProjectVO> project = new HashMap<>();
-	
+	location, portfoliofile, user_proj, user_emblem, user_grade,com_name;
 	private Date birth;
-	
 	private int ability,social, diligent, creativity, user_sum, user_avg;
-	
-	public int[] evaluate= new int[6];//evaluate는 dao에 없지만 메소드때문에 만듬
+	private int[] evaluate;//evaluate는 dao에 없지만 메소드때문에 만듬
 	
 	//디폴트 생성자
 	public PersonVO() {}
 	
+	public String getCom_name() {
+		return user_name;
+	}
+
 	//회원 가입시 필요한 생성자
 	public PersonVO(String user_id, String user_pw, String user_name, String gender, String user_phone,
 			String user_email, String photo, String development, String design, String planning, String specialty,
@@ -47,13 +42,14 @@ public class PersonVO {
 		this.birth = birth;
 	}
 	//점수 받아올 때
-	/*public PersonVO(int ability, int social, int diligent, int creativity) {
+	public PersonVO(int ability, int social, int diligent, int creativity) {
 		
+		evaluate = new int[]{ability,social,diligent,creativity};
 		calculate();
 		this.user_sum = user_sum;
 		this.user_avg = user_avg;
-	}*/
-	
+	}
+
 	public String getUser_id() {
 		return user_id;
 	}
@@ -158,13 +154,12 @@ public class PersonVO {
 		this.portfoliofile = portfoliofile;
 	}
 
-	public HashMap<String,HashMap<String, ProjectVO>> getUser_proj() {
+	public String getUser_proj() {
 		return user_proj;
 	}
 
-	public void setUser_proj(String people, HashMap<String, ProjectVO> proj) {
-		
-		this.user_proj.put(people, proj);
+	public void setUser_proj(String user_proj) {
+		this.user_proj = user_proj;
 	}
 
 	public String getUser_emblem() {
@@ -230,7 +225,7 @@ public class PersonVO {
 	public void setUser_avg(int user_avg) {
 		this.user_avg = user_avg;
 	}
-	
+
 	public int[] getEvaluate() {
 		return evaluate;
 	}
@@ -246,11 +241,13 @@ public class PersonVO {
 		user_avg = user_sum/evaluate.length;
 	}
 	
-	public String strBirth(){
+	public String strBirth()
+	{
 		return new SimpleDateFormat("yyyy-MM-dd").format(birth);
 	}
 	
-	public void parseBirth(String strBirth){
+	public void parseBirth(String strBirth)
+	{
 		try {
 			birth = new SimpleDateFormat("yyyy-MM-dd").parse(strBirth);
 		} catch (ParseException e) {
@@ -258,6 +255,7 @@ public class PersonVO {
 			e.printStackTrace();
 		}
 	}
+	
 
 	public Date getBirth() {
 		return birth;
@@ -267,3 +265,4 @@ public class PersonVO {
 		this.birth = birth;
 	}
 }
+

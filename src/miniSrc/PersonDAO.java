@@ -1,13 +1,14 @@
 package miniSrc;
 
 import java.sql.Connection;
+import java.sql.Date;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
+import java.sql.Timestamp;
 import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Iterator;
 
 import miniSrc.PersonVO;
 
@@ -16,7 +17,7 @@ public class PersonDAO {
 	
 	String url ="localhost:1521:xe";
 	String id = "java";
-	String pw = "1234";
+	String pw = "java";
 	
 	Connection con = null;
 	PreparedStatement stmt = null;
@@ -38,7 +39,8 @@ public class PersonDAO {
 		}
 		
 	}
-	//전체 회원의 전체 정보
+
+	
 	public ArrayList<PersonVO> list()
 	{
 		ArrayList<PersonVO> res =new ArrayList<>();
@@ -70,7 +72,7 @@ public class PersonDAO {
 		return res;
 	}
 	
-	//아이디로 개인정보 불러오기
+	
 	public PersonVO detail(String user_id)
 	{
 		PersonVO res =null;
@@ -113,85 +115,8 @@ public class PersonDAO {
 		return res;
 	}
 	
-	
-	public PersonVO search(String specialty)
+	public void insert(PersonVO mem )
 	{
-		PersonVO res =null;
-
-		try {
-			sql = "select * from person where specialty LIKE ?";
-			System.out.print("여기!!!!!!!!!"+sql);
-			
-			stmt=con.prepareStatement(sql);
-			stmt.setString(1, specialty);
-			System.out.print("stmt"+stmt);
-			rs = stmt.executeQuery();
-			
-			if(rs.next())
-			{
-				res = new PersonVO();
-				
-				res.setUser_id(rs.getString("user_id"));
-				/*res.setUser_name(rs.getString("user_name"));
-				res.setUser_email(rs.getString("user_email"));
-				res.setUser_phone(rs.getString("user_phone"));
-				res.setLocation(rs.getString("location"));*/
-				/*res.setPortfoliofile(rs.getString("portfoliofile"));*/
-			}
-		
-		
-			
-			
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}finally {
-			close();
-		}
-		
-		return res;
-	}
-	
-	
-	public CompanyVO login(CompanyVO vo)//넣을때 vo쓰나?
-	{
-		CompanyVO res =null;
-
-		try {
-			sql = "select * from company where com_id = ? and com_pw = ?";
-		
-			stmt = con.prepareStatement(sql);
-			
-			stmt.setString(1, vo.getCom_id());
-			stmt.setString(2, vo.getCom_pw());
-			/*stmt.setString(3, vo.getCom_name());*/
-			
-			rs = stmt.executeQuery();
-			
-			if(rs.next())
-			{
-				res = new CompanyVO();
-				
-				res.setCom_id(rs.getString("com_id"));	
-				res.setCom_pw(rs.getString("com_pw"));	
-				res.setCom_name(rs.getString("com_name"));			
-				
-			}
-			
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}finally {
-			close();
-		}
-		
-		return res;
-	}
-	
-	
-	
-	//회원가입시 필요한 쿼리문
-	public void insert(PersonVO mem ){
 		try {
 	
 
@@ -216,6 +141,9 @@ public class PersonDAO {
 			stmt.setString(13,mem.getLocation());
 			stmt.setString(14,mem.getPortfoliofile());
 			System.out.println(stmt.executeUpdate());
+		
+
+	
 			
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
@@ -225,12 +153,13 @@ public class PersonDAO {
 		}
 	}
 	
-	//회원 삭제 ---미완성같아보임
-	public boolean delete(PersonVO mem ){
+	
+	public boolean delete(PersonVO mem )
+	{
 		boolean res = false;
 		try {
 			
-			sql = "delete from person where id=? and pw = ?";
+			sql = "delete from person where user_id=? and user_pw =?";
 			stmt=con.prepareStatement(sql);
 			stmt.setString(1, mem.getUser_id());
 			stmt.setString(2, mem.getUser_pw());
@@ -248,27 +177,33 @@ public class PersonDAO {
 		return res;
 	}
 	
-	//회원정보 수정--이것도 미완
-	public boolean modify(PersonVO mem ){
+	
+	public boolean modify(PersonVO mem )
+	{
 		boolean res = false;
 		try {
 			
-			sql = "update person set gender = ?, email = ? , where user_id =? and user_pw =?";
+			sql = "update person set user_name =?,user_phone=?, user_email =?,gender=?, development=?,design=?,planning=?,specialty=?, location=? where user_id =? and user_pw =?";
 			
 			stmt = con.prepareStatement(sql);
-	
-			stmt.setString(1,mem.getGender() );
-	
+			stmt.setString(1,mem.getUser_name() );
+			stmt.setString(2,mem.getUser_phone() );
 			stmt.setString(3, mem.getUser_email());
-	
-			stmt.setString(5,mem.getUser_id());
-			stmt.setString(6, mem.getUser_pw());
-			
-			
-		
+			stmt.setString(4,mem.getGender() );
+			stmt.setString(5,mem.getDevelopment());
+			stmt.setString(6,mem.getDesign());
+			stmt.setString(7,mem.getPlanning());
+			stmt.setString(8,mem.getSpecialty());
+			stmt.setString(9,mem.getLocation());
+			/*stmt.setString(10,mem.getPhoto());*/
+			stmt.setString(10,mem.getUser_id());
+			stmt.setString(11, mem.getUser_pw());
 			System.out.println(sql);
-			if(stmt.executeUpdate()>0)
+			System.out.println(stmt.executeUpdate());
+			
+			if(stmt.executeUpdate()>0){
 				res = true;
+			}
 			
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
@@ -303,25 +238,31 @@ public class PersonDAO {
 			
 		}
 	
-	//개인 아이디로 개발자 평균덕목 조회
-	public void allGrade(String user_id){
-		ArrayList<PersonVO> res =new ArrayList<>();
-		int[] middle=new int[6];
+	public PersonVO login(PersonVO vo)
+	{
+		PersonVO res =null;
+
 		try {
-			sql = "select avg(ability),avg(social),avg(diligent),"
-				+ "avg(creativity),avg(sum),avg(avg) from person_grade"
-				+ "where user_id=?";
-			stmt=con.prepareStatement(sql);
-			stmt.setString(1, user_id);
+			sql = "select * from person where user_id = ? and user_pw = ?";
+			
+			stmt = con.prepareStatement(sql);
+			
+			stmt.setString(1, vo.getUser_id());
+			stmt.setString(2, vo.getUser_pw());
+			
 			rs = stmt.executeQuery();
 			
-			
-			if(rs.next()){
+			if(rs.next())
+			{
+				res = new PersonVO();
 				
-				int[] middle2= { rs.getInt("ability"), rs.getInt("social"), rs.getInt("diligent")
-				,rs.getInt("creativity"), rs.getInt("sum"), rs.getInt("avg")};
-				middle=middle2;
+				res.setUser_id(rs.getString("User_id"));
+				res.setUser_name(rs.getString("User_name"));	
+				System.out.println(res);
+				
 			}
+			
+			
 			
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
@@ -330,11 +271,15 @@ public class PersonDAO {
 			close();
 		}
 		
-		/*return res;*/
+		return res;
 	}
 	
 	
-	public void close(){
+	
+	
+	
+	public void close()
+	{
 		try { if(rs!=null) rs.close();} catch (SQLException e) {}
 		try { if(stmt!=null) stmt.close();} catch (SQLException e) {}
 		try { if(con!=null)	con.close();} catch (SQLException e) { }

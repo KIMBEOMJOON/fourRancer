@@ -9,7 +9,7 @@
 <body>
 개인로그인
 	<form action="../../login/second/comLogReg.jsp">
-		<%-- <input type="hidden" name="goUrl" value="${nowUrl }" /> --%>
+		<input type="hidden" name="goUrl" value="${nowUrl }" />
 		id:<input type="text" name="memId"/> <%-- value="${memId }" --%>
 		pw:<input type="text" name="memPw" />
 		<input type="submit" value="로그인" />

@@ -31,6 +31,7 @@ document.oncontextmenu=hideMenu;
 	<tr>
 		<td>제목</td><td><%=vo.getTitle() %></td>
 	</tr>
+	
 	<%if(vo.getUpdownfile()!=null){ %>
 	<tr>
 		<td>파일</td>

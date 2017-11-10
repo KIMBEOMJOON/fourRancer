@@ -11,7 +11,7 @@ public class CompanyDAO {
 
 	String url ="localhost:1521:xe";
 	String id = "java";
-	String pw = "1234";
+	String pw = "java";
 	
 	Connection con = null;
 	PreparedStatement stmt = null;
