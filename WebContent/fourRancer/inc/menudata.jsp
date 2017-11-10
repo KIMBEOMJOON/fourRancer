@@ -57,6 +57,7 @@
 	submenu2.put("gongji","공지사항");
 	submenu2.put("qna","QnA");
 	submenu2.put("fnq","FnQ");
+	submenu2.put("필수게시판","필수게시판");
 	
 	HashMap<String,LinkedHashMap<String, String>>menu = new HashMap();
 	
@@ -70,24 +71,6 @@
 	submenu1.put("comInformManager","기업정보관리");
 	submenu1.put("toFree","프리랜서평가");
 	submenu1.put("levelSearch","등급조회");
-
-	
-	menu.put("gallery",new LinkedHashMap());
-	menu.get("gallery").put("first","소녀시대");
-	menu.get("gallery").put("boy","소년시대");
-	
-	menu.put("product",new LinkedHashMap());
-	menu.get("product").put("first","tv");
-	menu.get("product").put("aircon","에어콘");
-	menu.get("product").put("handphone","핸드폰");
-	
-	
-	menu.put("center",new LinkedHashMap());
-	menu.get("center").put("first","공지사항");
-	menu.get("center").put("fnq","즐겨찾는질문");
-	menu.get("center").put("qna","질문및답변");
-	
-	
 		
 	LinkedHashMap<String, String> menuList = menu.get(menuParam); 
 	
