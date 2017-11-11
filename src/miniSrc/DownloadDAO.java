@@ -189,14 +189,15 @@ public class DownloadDAO {
 		return res;
 	}
 	
-
+	
+	
 	public boolean modify(DownloadVO mem )
 	{
 		boolean res = false;
 		try {
 			
 			
-			sql = "update download set  title = ?, content = ?, updownfile=?, oridownfile=?"
+			sql = "update download set  title = ?, content = ?, updownfile=?, oridown=?"
 				+ " where id=? and pw = ?";
 		
 			stmt = con.prepareStatement(sql);
@@ -206,7 +207,8 @@ public class DownloadDAO {
 			stmt.setString(4, mem.getOridown());
 			stmt.setInt(5, mem.getId());
 			stmt.setString(6, mem.getPw());
-			
+			System.out.println(mem.getUpdownfile());
+			System.out.println(mem.getOridown());
 			System.out.println(sql);
 			if(stmt.executeUpdate()>0)
 				res = true;

@@ -3,7 +3,7 @@
 <%@ page language="java" contentType="text/html; charset=EUC-KR"
     pageEncoding="EUC-KR"%>
 <%
-	String sys = request.getParameter("updownload");
+	String sys = request.getParameter("updownfile");
 	String ori = request.getParameter("oridown");
 	
 	String upfile = request.getRealPath("downloadfile");

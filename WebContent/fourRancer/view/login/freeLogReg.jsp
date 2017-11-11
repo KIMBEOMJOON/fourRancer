@@ -9,10 +9,12 @@ PersonVO vo = new PersonVO();
 vo.setUser_id(request.getParameter("memId"));
 vo.setUser_pw(request.getParameter("memPw"));
 
-PersonVO res = new PersonDAO().login(vo);
 
 String msg = "id와 pw가 일치하지 않습니다.";
 String url = "../../center/first/index.jsp";
+
+
+PersonVO res = new PersonDAO().login(vo);
 
 if(res!=null)
 {

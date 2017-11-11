@@ -81,7 +81,7 @@ function go(){
 			<td colspan="2" align="center">
 			<input type="submit" value="수정" class="sch" />
 			<input type="reset" value="초기화" class="sch"/>
-			<a href="downList.jsp">목록으로</a>
+			<a href="detail.jsp?id=<%=vo.getId()%>">뒤로가기</a>
 			</td>
 		</tr>
 	</table>

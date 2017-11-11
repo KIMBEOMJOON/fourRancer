@@ -37,9 +37,10 @@ document.oncontextmenu=hideMenu;
 		<td>ÆÄÀÏ</td>
 		<td>
 		<% if(vo.isImgChk()) {%>
-		<img src="../../downboard/first/downloadfile/<%=vo.getUpdownfile() %>">
+		<img src="downloadfile/<%=vo.getUpdownfile() %>" width="250px">
 		<%} else{ %>
-			<a href="download.jsp?updownload=<%=vo.getUpdownfile() %>&oridown=<%=vo.getOridown()%>"><%=vo.getOridown()%></a>
+		
+			<a href="download.jsp?updownfile=<%=vo.getUpdownfile() %>&oridown=<%=vo.getOridown()%>"><%=vo.getOridown()%></a>
 		<%} %>
 		</td>
 

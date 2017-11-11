@@ -5,8 +5,8 @@
 
 
 String url = "../"+request.getParameter("goUrl");
-
-/* CompanyVO res = (CompanyVO)session.getAttribute("mem"); */
+/* 
+CompanyVO res = (CompanyVO)session.getAttribute("mem"); */
 
 session.invalidate();
 %>
@@ -18,8 +18,7 @@ session.invalidate();
 </head>
 <body>
 	<script type="text/javascript">
-<%-- 	alert("<%=res.getCom_name()%>님 로그아웃되었습니다."); --%>
-	alert("로그아웃되었습니다.");
+		alert(" 로그아웃되었습니다.");
 		location.href="<%=url%>";
 	</script>
 </body>
