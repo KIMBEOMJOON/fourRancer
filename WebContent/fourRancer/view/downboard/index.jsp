@@ -7,6 +7,7 @@
     pageEncoding="EUC-KR"%>
 <%
 
+
 	DownloadDAO dao = new DownloadDAO();
 	ArrayList<DownloadVO> mems = dao.list();
 %>    
