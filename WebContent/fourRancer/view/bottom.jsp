@@ -4,7 +4,9 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%> 
 
  <table width="100%">
-
+<td>
+<img src="../../center/first/joon.jpg" width="200px">
+</td>
 
 	<tr align="center">
 		<c:forEach var="ee" items="${bottom}">

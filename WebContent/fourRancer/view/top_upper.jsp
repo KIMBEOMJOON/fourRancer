@@ -9,7 +9,7 @@
 	String loginPage = (String)request.getAttribute("loginPage");
 %> --%>    
 
-
+<a class="navbar-brand" href="../../center/first/index.jsp"><img src="../../center/first/joon.jpg"></a>
 <table width="100%">
 <%-- <c:if test="${mem!=null} }"> --%>
 	<tr>
