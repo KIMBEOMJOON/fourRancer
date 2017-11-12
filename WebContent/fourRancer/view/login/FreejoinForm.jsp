@@ -1,6 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=EUC-KR"
     pageEncoding="EUC-KR"%>
-
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -72,7 +71,7 @@
 			<table border=1 width="70%">
 
 <tr>
-<td width="250px"> <font><strong>개발분야</strong></font>
+<td> <font><strong>개발분야</strong></font>
 </td>
 </tr>
 
@@ -234,7 +233,7 @@
 		<td><input type="checkbox" name="location" value="용인"/>용인</td>
 		<td><input type="checkbox" name="location" value="화성"/>화성</td>
 		<td><input type="checkbox" name="location" value="일산"/>일산</td>
-		<td width="70px"><input type="checkbox" name="location" value="의정부"/>의정부</td>
+		<td width="65px"><input type="checkbox" name="location" value="의정부"/>의정부</td>
 		<td width="65px"><input type="checkbox" name="location" value="성남"/>성남</td>
 		<td width="65px"><input type="checkbox" name="location" value="수원"/>수원</td>
 		</tr>
