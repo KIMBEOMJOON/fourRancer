@@ -2,6 +2,7 @@ package miniSrc;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
 
 public class PersonVO {
@@ -9,17 +10,15 @@ public class PersonVO {
 	user_id, user_pw, user_name, gender,
 	user_phone, user_email, photo, 
 	development, design, planning, specialty, 
-	location, portfoliofile, user_proj, user_emblem, user_grade,com_name;
+	location, portfoliofile, user_proj, user_emblem, user_grade,com_name,
+	//insert by jdb
+	p_id, sysFile, oriFile;//end
 	private Date birth;
 	private int ability,social, diligent, creativity, user_sum, user_avg;
-	private int[] evaluate;//evaluate는 dao에 없지만 메소드때문에 만듬
+	private int[] evaluate= new int[4];//evaluate는 dao에 없지만 메소드때문에 만듬
 	
 	//디폴트 생성자
 	public PersonVO() {}
-	
-	public String getCom_name() {
-		return user_name;
-	}
 
 	//회원 가입시 필요한 생성자
 	public PersonVO(String user_id, String user_pw, String user_name, String gender, String user_phone,
@@ -41,13 +40,95 @@ public class PersonVO {
 		this.portfoliofile = portfoliofile;
 		this.birth = birth;
 	}
-	//점수 받아올 때
-	public PersonVO(int ability, int social, int diligent, int creativity) {
+	//////start jdb
+	//파일체크 메소드
+	//이미지일때는 이미지/ 이미지 아닐땐 파일명
+	public boolean isImgChk() {
+
+		boolean res = false;
 		
-		evaluate = new int[]{ability,social,diligent,creativity};
-		calculate();
-		this.user_sum = user_sum;
-		this.user_avg = user_avg;
+		ArrayList<String> fileArr = new ArrayList<>();
+		fileArr.add("jpg");
+		fileArr.add("jpeg");
+		fileArr.add("bmp");
+		fileArr.add("gif");
+		fileArr.add("png");
+		
+		//파일명이 없지 않을때
+		if (sysFile != null && !sysFile.equals("") && !sysFile.equals("null")) {
+			String ext = sysFile.toLowerCase().substring(sysFile.lastIndexOf(".") + 1);
+			res = fileArr.contains(ext);
+		}
+		return res;
+	}
+	
+
+	public int[] getEvaluate() {
+		return evaluate;
+	}
+	//개발자 덕목받아서 vo에 집어넣고 평균 합계 구하는 메서드
+	public void setEvaluate(String[] cal) {
+		
+		for (int i = 0; i < cal.length; i++) {
+			int inputNum=Integer.parseInt(cal[i]);
+			this.evaluate[i]=inputNum;
+			this.user_sum+=inputNum;
+		}
+		
+		this.ability=evaluate[0];
+		this.social=evaluate[1];
+		this.diligent=evaluate[2];
+		this.creativity=evaluate[3];
+		
+		this.user_avg=this.user_sum/cal.length;
+		this.setUser_grade(user_avg);
+	}
+	
+	public String getUser_grade() {
+		return user_grade;
+	}
+
+	public void setUser_grade(int avg) {
+		this.user_grade = "bronze";
+		if (avg>66) {
+			this.user_grade = "gold";
+		} else if(avg>33){
+			this.user_grade = "silver";
+		}
+	}
+	//메서드 오버로딩
+	public void setUser_grade(String grade) {
+		this.user_grade=grade;
+	}
+	
+	public String getSysFile() {
+		return sysFile;
+	}
+
+	public void setSysFile(String sysFile) {
+		this.sysFile = sysFile;
+	}
+
+	public String getOriFile() {
+		return oriFile;
+	}
+
+	public void setOriFile(String oriFile) {
+		this.oriFile = oriFile;
+	}
+	
+	public String getP_id() {
+		return p_id;
+	}
+
+	public void setP_id(String p_id) {
+		this.p_id = p_id;
+	}
+	/////////////////end jdb
+	
+	
+	public String getCom_name() {
+		return user_name;
 	}
 
 	public String getUser_id() {
@@ -170,14 +251,6 @@ public class PersonVO {
 		this.user_emblem = user_emblem;
 	}
 
-	public String getUser_grade() {
-		return user_grade;
-	}
-
-	public void setUser_grade(String user_grade) {
-		this.user_grade = user_grade;
-	}
-
 	public int getAbility() {
 		return ability;
 	}
@@ -224,21 +297,6 @@ public class PersonVO {
 
 	public void setUser_avg(int user_avg) {
 		this.user_avg = user_avg;
-	}
-
-	public int[] getEvaluate() {
-		return evaluate;
-	}
-
-	public void setEvaluate(int[] evaluate) {
-		this.evaluate = evaluate;
-	}
-
-	private void calculate() {
-		for (int i : evaluate) {
-			user_sum+=i;
-		}
-		user_avg = user_sum/evaluate.length;
 	}
 	
 	public String strBirth()
