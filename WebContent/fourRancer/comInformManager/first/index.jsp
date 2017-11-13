@@ -4,9 +4,6 @@
 
 <%@ include file="../../inc/menudata.jsp" %>
 
-<%-- <%
-	System.out.println(request.getAttribute("cate"));
-request.setAttribute("data",  new CenterDAO().list((String)request.getAttribute("cate")));
-%> --%>
+
 
 <jsp:forward page="../../view/template.jsp"></jsp:forward>

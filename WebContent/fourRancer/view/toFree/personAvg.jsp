@@ -1,9 +1,10 @@
-<%@page import="Project.ProjectVO"%>
-<%@page import="Project.ProjectDAO"%>
+<%@page import="miniSrc.ProjectVO"%>
+<%@page import="miniSrc.ProjectDAO"%>
 <%@page import="java.util.ArrayList"%>
 <%@ page language="java" contentType="text/html; charset=EUC-KR"
     pageEncoding="EUC-KR"%>
 <%
+
 	request.setCharacterEncoding("euc-kr");
 	String proId = (String)session.getAttribute("pro");
 	ProjectDAO dao = new ProjectDAO();

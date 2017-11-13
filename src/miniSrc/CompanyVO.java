@@ -14,9 +14,9 @@ public class CompanyVO {
 	
 	Integer com_Salary, work_Time, promise, com_Sum, com_Avg;
 	//기업명으로 프로젝트에 관한 걸 가져옴
-	HashMap<String, HashMap<String, ProjectVO>> com_proj = new HashMap<>();
+	/*HashMap<String, HashMap<String, ProjectVO>> com_proj = new HashMap<>();
 	//프로젝트명으로 프로젝트 객체(프로젝트 정보)을 가져옴
-	HashMap<String, ProjectVO> project = new HashMap<>();	
+	HashMap<String, ProjectVO> project = new HashMap<>();	*/
 	
 	public CompanyVO() {
 		// TODO Auto-generated constructor stub
@@ -196,7 +196,7 @@ public class CompanyVO {
 		this.com_Avg = com_Avg;
 	}
 
-	public HashMap<String, HashMap<String, ProjectVO>> getCom_proj() {
+/*	public HashMap<String, HashMap<String, ProjectVO>> getCom_proj() {
 		return com_proj;
 	}
 
@@ -210,6 +210,6 @@ public class CompanyVO {
 
 	public void setProject(HashMap<String, ProjectVO> project) {
 		this.project = project;
-	}	
+	}	*/
 	
 }

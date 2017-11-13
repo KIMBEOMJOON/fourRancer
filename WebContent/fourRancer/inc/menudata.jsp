@@ -57,7 +57,7 @@
 	submenu2.put("gongji","공지사항");
 	submenu2.put("qna","QnA");
 	submenu2.put("fnq","FnQ");
-	submenu2.put("필수게시판","필수게시판");
+	submenu2.put("downboard","필수게시판");
 	
 	HashMap<String,LinkedHashMap<String, String>>menu = new HashMap();
 	

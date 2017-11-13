@@ -7,7 +7,7 @@
 	String ori = request.getParameter("oridown");
 	
 	String upfile = request.getRealPath("downloadfile");
-	upfile = "C:\\Users\\user\\Documents\\ggg\\miniProj\\WebContent\\fourRancer\\downboard\\first\\downloadfile";
+	upfile = "C:\\Users\\user\\git\\fourRancer\\WebContent\\fourRancer\\downboard\\first\\downloadfile";
 	
 	String en = URLEncoder.encode(ori, "utf-8");
 	response.setHeader("Content-Disposition", "attachment;filename="+en);

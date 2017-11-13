@@ -3,31 +3,4 @@
     pageEncoding="EUC-KR"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt"  uri="http://java.sun.com/jsp/jstl/fmt"%>
-오시는길
-
-<%-- <table border="">
-	<tr>
-		<td>번호</td>
-		
-		<td>제목</td>
-		<td>작성일</td>
-	</tr>
-
-
-<c:forEach items="${data }" var="vo" varStatus="no">
-<tr>
-		<td>${no.index+1 }</td>
-		
-		
-		<td><a href="detail.jsp?id=${vo.id }">${vo.title }</a></td>
-		<td><fmt:formatDate value="${vo.regDate }" pattern="yyyy-MM-dd" /> </td>
-	</tr>
-</c:forEach>
-
-	<tr>
-		<td colspan="4" align="right">
-			<a href="joinForm.jsp">글쓰기</a>
-		</td>
-	</tr>
-</table>
- --%>
+<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3162.2444976005895!2d126.98988031525161!3d37.572859979796704!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x357ca2de8755d8a5%3A0xcebb3cb311014c45!2z7KSR7JWZaHRh!5e0!3m2!1sko!2skr!4v1510507765175" width="500" height="370" frameborder="0" style="border:0" allowfullscreen></iframe>지도얌

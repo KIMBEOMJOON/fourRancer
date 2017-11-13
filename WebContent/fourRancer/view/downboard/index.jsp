@@ -6,6 +6,8 @@
 <%@ page language="java" contentType="text/html; charset=EUC-KR"
     pageEncoding="EUC-KR"%>
 <%
+
+
 	DownloadDAO dao = new DownloadDAO();
 	ArrayList<DownloadVO> mems = dao.list();
 %>    

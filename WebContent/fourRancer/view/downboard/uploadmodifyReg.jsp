@@ -9,7 +9,7 @@
 <%
 	MultipartRequest mm = new MultipartRequest(
 		request,
-		"C:\\Users\\user\\Documents\\ggg\\miniProj\\WebContent\\kbj\\download\\downloadfile",
+		"C:\\Users\\user\\git\\fourRancer\\WebContent\\fourRancer\\downboard\\first\\downloadfile",
 		10*1024*1024,
 		"euc-kr",
 		new DefaultFileRenamePolicy()
