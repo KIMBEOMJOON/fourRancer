@@ -14,7 +14,7 @@ import miniSrc.ProjectVO;
 public class ProjectDAO {
 	String url ="localhost:1521:xe";
 	String id = "java";
-	String pw = "1234";
+	String pw = "java";
 	
 	Connection con = null;
 	PreparedStatement stmt = null;
@@ -57,6 +57,36 @@ public class ProjectDAO {
 		}
 		return res;
 	}
+	
+	
+//////////////////////////////////
+	
+	public void insert(ProjectVO mem ){
+		try {
+			sql = "insert into project "
+					+ "(p_id, com_id, pro_subject, term, rank, input_num, pro_salary) values (" 
+					+"?,?,?,?,?,?,?)";
+					
+			System.out.println(sql);
+			stmt=con.prepareStatement(sql);
+			stmt.setString(1, mem.getP_id());
+			stmt.setString(2, mem.getCom_id());
+			stmt.setString(3, mem.getPro_subject());
+			stmt.setInt(4, mem.getTerm());
+			stmt.setString(5, mem.getRank());
+			stmt.setInt(6, mem.getInput_num());
+			stmt.setInt(7, mem.getPro_salary());
+			System.out.println(stmt.executeUpdate());
+			
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally {
+			close();
+		}
+	}
+////////////////////////////////////	
+	
 	
 	//아이디로 개인정보 전체 불러오기
 	public ProjectVO userProlist(String user_id){

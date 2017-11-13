@@ -8,13 +8,13 @@ import java.util.HashMap;
 
 public class CompanyVO {
 
-	String com_id, com_pw, com_name, represent, enroll_Num
-	, info, charger, char_Phone, com_Phone, com_Address, 
-	com_Email, homepage, com_Grade, found_Day, com_Proj, logo ;
+	String com_id, com_pw, com_name, represent, enroll_num
+	, info, charger, char_phone, com_phone, com_address, 
+	com_email, homepage, com_grade, found_day, com_proj, logo ;
 	
 	Integer com_Salary, work_Time, promise, com_Sum, com_Avg;
 	//기업명으로 프로젝트에 관한 걸 가져옴
-	/*HashMap<String, HashMap<String, ProjectVO>> com_proj = new HashMap<>();
+	/*HashMap<String, HashMap<String, ProjectVO>> com_proj1 = new HashMap<>();
 	//프로젝트명으로 프로젝트 객체(프로젝트 정보)을 가져옴
 	HashMap<String, ProjectVO> project = new HashMap<>();	*/
 	
@@ -22,6 +22,10 @@ public class CompanyVO {
 		// TODO Auto-generated constructor stub
 	}	
 	
+	public String getCom_proj() {
+		return com_proj;
+	}
+
 	public CompanyVO(String com_id, String com_name) {
 		super();
 		this.com_id = com_id;
@@ -60,12 +64,12 @@ public class CompanyVO {
 		this.represent = represent;
 	}
 
-	public String getEnroll_Num() {
-		return enroll_Num;
+	public String getEnroll_num() {
+		return enroll_num;
 	}
 
-	public void setEnroll_Num(String enroll_Num) {
-		this.enroll_Num = enroll_Num;
+	public void setEnroll_num(String enroll_num) {
+		this.enroll_num = enroll_num;
 	}
 
 	public String getInfo() {
@@ -84,36 +88,36 @@ public class CompanyVO {
 		this.charger = charger;
 	}
 
-	public String getChar_Phone() {
-		return char_Phone;
+	public String getChar_phone() {
+		return char_phone;
 	}
 
-	public void setChar_Phone(String char_Phone) {
-		this.char_Phone = char_Phone;
+	public void setChar_phone(String char_phone) {
+		this.char_phone = char_phone;
 	}
 
-	public String getCom_Phone() {
-		return com_Phone;
+	public String getCom_phone() {
+		return com_phone;
 	}
 
-	public void setCom_Phone(String com_Phone) {
-		this.com_Phone = com_Phone;
+	public void setCom_phone(String com_phone) {
+		this.com_phone = com_phone;
 	}
 
-	public String getCom_Address() {
-		return com_Address;
+	public String getCom_address() {
+		return com_address;
 	}
 
-	public void setCom_Address(String com_Address) {
-		this.com_Address = com_Address;
+	public void setCom_address(String com_address) {
+		this.com_address = com_address;
 	}
 
-	public String getCom_Email() {
-		return com_Email;
+	public String getCom_email() {
+		return com_email;
 	}
 
-	public void setCom_Email(String com_Email) {
-		this.com_Email = com_Email;
+	public void setCom_email(String com_email) {
+		this.com_email = com_email;
 	}
 
 	public String getHomepage() {
@@ -124,28 +128,20 @@ public class CompanyVO {
 		this.homepage = homepage;
 	}
 
-	public String getCom_Grade() {
-		return com_Grade;
+	public String getCom_grade() {
+		return com_grade;
 	}
 
-	public void setCom_Grade(String com_Grade) {
-		this.com_Grade = com_Grade;
+	public void setCom_grade(String com_grade) {
+		this.com_grade = com_grade;
 	}
 
-	public String getFound_Day() {
-		return found_Day;
+	public String getFound_day() {
+		return found_day;
 	}
 
-	public void setFound_Day(String found_Day) {
-		this.found_Day = found_Day;
-	}
-
-	public String getCom_Proj() {
-		return com_Proj;
-	}
-
-	public void setCom_Proj(String com_Proj) {
-		this.com_Proj = com_Proj;
+	public void setFound_day(String found_day) {
+		this.found_day = found_day;
 	}
 
 	public String getLogo() {
@@ -196,20 +192,8 @@ public class CompanyVO {
 		this.com_Avg = com_Avg;
 	}
 
-/*	public HashMap<String, HashMap<String, ProjectVO>> getCom_proj() {
-		return com_proj;
-	}
-
-	public void setCom_proj(HashMap<String, HashMap<String, ProjectVO>> com_proj) {
+	public void setCom_proj(String com_proj) {
 		this.com_proj = com_proj;
 	}
 
-	public HashMap<String, ProjectVO> getProject() {
-		return project;
-	}
-
-	public void setProject(HashMap<String, ProjectVO> project) {
-		this.project = project;
-	}	*/
-	
 }

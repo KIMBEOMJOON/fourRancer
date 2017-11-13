@@ -273,6 +273,85 @@ public class PersonDAO {
 		
 		return res;
 	}
+	
+	/////lbh//////////////////////////////
+	
+	public PersonVO search1(String development, String design, String planning, String specialty)
+	{
+		PersonVO res =null;
+
+		try {
+			sql = "select * from person where development LIKE ? or design LIKE ? or planning LIKE ? or specialty LIKE ?";
+			/*System.out.print("여기!!!!!!!!!"+sql);*/
+			
+			stmt=con.prepareStatement(sql);
+			stmt.setString(1, '%'+development+'%');
+			stmt.setString(2, '%'+design+'%');
+			stmt.setString(3, '%'+planning+'%');
+			stmt.setString(4, '%'+specialty+'%');
+			System.out.print("stmt"+stmt);
+			rs = stmt.executeQuery();
+			
+			if(rs.next())
+			{
+				res = new PersonVO();
+				
+				res.setUser_id(rs.getString("user_id"));
+				res.setUser_name(rs.getString("user_name"));
+				res.setUser_email(rs.getString("user_email"));
+				res.setUser_phone(rs.getString("user_phone"));
+				res.setLocation(rs.getString("location"));
+				/*res.setPortfoliofile(rs.getString("portfoliofile"));*/
+			}
+		
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally {
+			close();
+		}
+		
+		return res;
+	}
+
+	public PersonVO search2(String location)
+	{
+		PersonVO res =null;
+
+		try {
+			sql = "select * from person where location LIKE ? ";
+			System.out.print("여기!!!!!!!!!"+sql);
+			
+			stmt=con.prepareStatement(sql);
+			stmt.setString(1, '%'+location+'%');
+			System.out.print("stmt"+stmt);
+			rs = stmt.executeQuery();
+			
+			if(rs.next())
+			{
+				res = new PersonVO();
+				
+				res.setUser_id(rs.getString("user_id"));
+				res.setUser_name(rs.getString("user_name"));
+				res.setUser_email(rs.getString("user_email"));
+				res.setUser_phone(rs.getString("user_phone"));
+				res.setLocation(rs.getString("location"));
+				/*res.setPortfoliofile(rs.getString("portfoliofile"));*/
+			}
+		
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally {
+			close();
+		}
+		
+		return res;
+	}
+	
+	
+	//////////////////////////////////////
+	
 	//insert by jdb
 	
 	/*//개인 아이디로 개발자 평균덕목 조회
@@ -308,11 +387,12 @@ public class PersonDAO {
 	/*(개인아이디, 개인프로젝트)와 평가 항목들을 받아서
 	평가 테이블에 삽입*/
 	public void partGrade(PersonVO vo){
+		/*boolean res=false;*/
 		try {
 			sql = "insert into Person_grade values "
 					+ "(?,?,?,?,?,?,?,?,?,?,?)";
-			System.out.println(vo.getAbility());
 			stmt=con.prepareStatement(sql);
+			
 			stmt.setString(1,vo.getUser_id());
 	        stmt.setString(2,vo.getP_id());
 	        stmt.setInt(3,vo.getAbility());
@@ -334,6 +414,47 @@ public class PersonDAO {
 		}
 	}
 	
+	/*(개인아이디, 개인프로젝트)와 평가 항목들을 받아서
+	평가 테이블에 삽입*/
+	public boolean modiGrade(PersonVO vo){
+		boolean res = false;
+		try {
+			sql = "update Person_grade set  "
+					+ "ability=?,social=?,diligent=?,creativity=?,"
+					+ "sum=?,avg=?,user_grade=?,sysfile=?,orifile=?"
+					+ "where user_id =? and p_id=?";
+			
+			stmt=con.prepareStatement(sql);
+			System.out.println(vo.getAbility());
+			System.out.println(vo.getUser_id());
+			System.out.println(vo.getP_id());
+			
+			stmt.setInt(1,vo.getAbility());
+	        stmt.setInt(2,vo.getSocial());
+	        stmt.setInt(3,vo.getDiligent());
+	        stmt.setInt(4,vo.getCreativity());
+	        stmt.setInt(5,vo.getUser_sum());
+	        stmt.setInt(6,vo.getUser_avg());
+			stmt.setString(7,vo.getUser_grade());
+			stmt.setString(8, vo.getSysFile());
+			stmt.setString(9, vo.getOriFile());
+			stmt.setString(10,vo.getUser_id());
+	        stmt.setString(11,vo.getP_id());
+			
+	        System.out.println(sql);
+			System.out.println(stmt.executeUpdate());
+			
+			if(stmt.executeUpdate()>0){
+				res = true;
+			}
+	        
+		} catch (Exception e) {
+			e.printStackTrace();
+		}finally {
+			close();
+		}
+		return res;
+	}
 	
 	//개인 아이디 와 프로젝트명 받아와서 사람 평가 찾기
 	public PersonVO findPerGrade(String user_id,String p_id){
@@ -370,9 +491,6 @@ public class PersonDAO {
 		}
 		return res;
 	}
-	
-	
-	
 	
 	public void close()
 	{
