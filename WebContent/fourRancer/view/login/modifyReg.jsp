@@ -8,7 +8,7 @@
 <%
 	MultipartRequest mm = new MultipartRequest(
 	request,
-	"C:\\Users\\user\\eclipse-workspace\\jspProj\\WebContent\\fourRancer\\login\\first\\Personfile",
+	"C:\\Users\\user\\git\\fourRancer\\WebContent\\fourRancer\\login\\first\\personfile",
 	10*1024*1024,
 	"euc-kr",
 	new DefaultFileRenamePolicy()

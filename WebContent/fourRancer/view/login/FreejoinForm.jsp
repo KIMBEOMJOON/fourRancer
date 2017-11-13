@@ -71,7 +71,7 @@
 			<table border=1 width="70%">
 
 <tr>
-<td> <font><strong>개발분야</strong></font>
+<td width="250px"> <font><strong>개발분야</strong></font>
 </td>
 </tr>
 
@@ -225,7 +225,7 @@
 		<td><input type="checkbox" name="location" value="강북"/>강북</td>
 		<td><input type="checkbox" name="location" value="강동"/>강동</td>
 		<td><input type="checkbox" name="location" value="강남"/>강남</td>
-		<td><input type="checkbox" name="location" value="강서"/>강서</td>
+		<td width="65px"><input type="checkbox" name="location" value="강서"/>강서</td>
 		</tr>
 		<tr>
 		<td>경기</td>
