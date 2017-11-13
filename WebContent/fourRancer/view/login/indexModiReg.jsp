@@ -8,13 +8,12 @@
 <%
 	MultipartRequest mm = new MultipartRequest(
 	request,
-	"C:\\Users\\user\\eclipse-workspace\\jspProj\\WebContent\\fourRancer\\login\\third\\fileUp",
+	"C:\\Users\\user\\git\\fourRancer\\WebContent\\fourRancer\\login\\third\\fileUp",
 	10*1024*1024,
 	"euc-kr",
 	new DefaultFileRenamePolicy()
 	);
 
-	System.out.println(mm.getParameter("photo"));
 	request.setCharacterEncoding("euc-kr");
 	
 	String com_email = mm.getParameter("com_email1")+
@@ -35,20 +34,22 @@
 	CompanyVO vo = new CompanyVO();
 	
 	vo.setCom_id(mm.getParameter("com_id"));
-	vo.setCom_pw(mm.getParameter("com_pw"));
-	vo.setCom_name(mm.getParameter("com_Name"));
-	vo.setFound_Day(mm.getParameter("found_Day"));
+	vo.setCom_pw(mm.getParameter("com_pw")); 
+	System.out.print("kakakaka::::"+mm.getParameter("com_name"));
+	vo.setCom_name(mm.getParameter("com_name"));
+	
+	vo.setFound_day(mm.getParameter("found_day"));
 	vo.setRepresent(mm.getParameter("represent"));
-	vo.setEnroll_Num(enroll_num);
+	vo.setEnroll_num(enroll_num);
 	vo.setLogo(mm.getFilesystemName("logo"));
 	vo.setInfo(mm.getParameter("info"));
 	vo.setCharger(mm.getParameter("charger"));
-	vo.setChar_Phone(char_phone);
-	vo.setCom_Phone(com_phone);
-	vo.setCom_Address(com_address);
-	vo.setCom_Email(com_email);
+	vo.setChar_phone(char_phone);
+	vo.setCom_phone(com_phone);
+	vo.setCom_address(com_address);
+	vo.setCom_email(com_email);
 	vo.setHomepage(mm.getParameter("homepage"));
-	vo.setCom_Proj(mm.getFilesystemName("com_proj"));
+	vo.setCom_proj(mm.getFilesystemName("com_proj"));
 	/* 
 	if(mm.getFilesystemName("photo")==null){
 	mem.setPhoto(mm.getParameter("photo"));		
@@ -64,7 +65,7 @@
 	if(new CompanyDAO().modify(vo))
 	{
 		msg = "수정 되었습니다";
-		url = "indexDetail.jsp?Com_id="+vo.getCom_id();
+		url = "indexDetail.jsp?com_id="+vo.getCom_id();
 	}
 	
 	%>    

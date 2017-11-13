@@ -10,7 +10,7 @@
 
 	MultipartRequest mm = new MultipartRequest(
 			request,
-			"C:\\Users\\user\\eclipse-workspace\\jspProj\\WebContent\\fourRancer\\login\\third\\fileUp",
+			"C:\\Users\\user\\git\\fourRancer\\WebContent\\fourRancer\\login\\third\\fileUp",
 			10*1024*1024,
 			"euc-kr",
 			new DefaultFileRenamePolicy()
@@ -35,19 +35,19 @@
 	
 	vo.setCom_id(mm.getParameter("com_id"));
 	vo.setCom_pw(mm.getParameter("com_pw"));
-	vo.setCom_name(mm.getParameter("com_Name"));
-	vo.setFound_Day(mm.getParameter("found_Day"));
+	vo.setCom_name(mm.getParameter("com_name"));
+	vo.setFound_day(mm.getParameter("found_day"));
 	vo.setRepresent(mm.getParameter("represent"));
-	vo.setEnroll_Num(enroll_num);
+	vo.setEnroll_num(enroll_num);
 	vo.setLogo(mm.getFilesystemName("logo"));
 	vo.setInfo(mm.getParameter("info"));
 	vo.setCharger(mm.getParameter("charger"));
-	vo.setChar_Phone(char_phone);
-	vo.setCom_Phone(com_phone);
-	vo.setCom_Address(com_address);
-	vo.setCom_Email(com_email);
+	vo.setChar_phone(char_phone);
+	vo.setCom_phone(com_phone);
+	vo.setCom_address(com_address);
+	vo.setCom_email(com_email);
 	vo.setHomepage(mm.getParameter("homepage"));
-	vo.setCom_Proj(mm.getFilesystemName("com_proj"));
+	vo.setCom_proj(mm.getFilesystemName("com_proj"));
 	
 	
 	/* vo.setGrade(Integer.parseInt(request.getParameter("grade")));
@@ -77,26 +77,3 @@
 </script>
 </body>
 </html>
-<%--  
-
-<%@page import="com.oreilly.servlet.multipart.DefaultFileRenamePolicy"%>
-
-<%@page import="com.oreilly.servlet.MultipartRequest"%>
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-    pageEncoding="EUC-KR"%>
-<%
-	MultipartRequest mm = new MultipartRequest(
-			request,
-			"E:\\lee\\public\\webWork\\jspProj\\WebContent\\ff",
-			10*1024*1024,
-			"euc-kr",
-			new DefaultFileRenamePolicy()
-			);
-	
-	response.sendRedirect("uploadDetail.jsp?file1="+mm.getFilesystemName("file1")+
-			"&file2="+mm.getFilesystemName("file2")
-			);
-	
-%>    
- --%>
-	

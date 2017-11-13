@@ -2,7 +2,6 @@
 <%@page import="miniSrc.CompanyDAO"%>
 <%@page import="java.util.*"%>
 
-
 <%@ page language="java" contentType="text/html; charset=EUC-KR"
 	pageEncoding="EUC-KR"%>
 <%
@@ -22,6 +21,7 @@ function frmGo(){
 	
 }
 </script>
+
 <style type="text/css">
 .sch {
 	width: 100px;
@@ -36,32 +36,26 @@ function frmGo(){
 	<table border=1>
 		<tr>
 			<td>id</td>
-			<td><input type="text" name="com_id" size="10" maxlength="8"
-			value="<%=vo.getCom_id()%>" />
-			
-			</td>
+			<td><input type="text" name="com_id" 
+			value="<%=vo.getCom_id()%>" readonly="readonly" /></td>
 		</tr>
 		<tr>
 			<td>pw</td>
-			<td><input type="password" name="com_pw" />pw확인
-			<input type="password" name="pwConfirm" /></td>
+			<td><input type="password" name="com_pw" /></td>
 		</tr>
 		<tr>
 			<td>회사명</td>
-			<td><input type="text" name="com_Name"
-			value="<%=vo.getCom_name()%>" /></td>
+			<td><input type="text" name="com_name" value="<%=vo.getCom_name()%>" /></td>
 		</tr>
 		<tr>
 			<td>창립일</td>
-				<td><input type="text" name="found_Day"
-				value="<%=vo.getFound_Day()%>" />
-			</td>
+			<td><input type="text" name="found_day" value="<%=vo.getFound_day()%>" /></td>
 		</tr>
 		<tr>
 			<td>대표자명</td>
 			<td><input type="text" name="represent" 
-			value="<%=vo.getRepresent()%>"/></td>
-			</tr>
+			value="<%=vo.getRepresent()%>" /></td>
+		</tr>
 		<tr>
 			<td>사업자등록번호</td>
 			<td><input type="text" name="enroll_num1" />-
@@ -71,22 +65,16 @@ function frmGo(){
 		<tr>
 			<td>회사 로고</td>
 			<td><input type="file" name="logo"
-			value="<%=vo.getLogo()%>" /></td>
+			value="fileUp/<%=vo.getLogo()%>" /></td>
 		</tr>
 		<tr>
 			<td>주요사업내용</td>
-			<td><textarea rows="5" cols="60" name="info" 
-			value="<%=vo.getInfo()%>" >?</textarea></td>
+			<td><textarea rows="5" cols="60" name="info" value="<%=vo.getInfo()%>" >주요사업내용</textarea></td>
 		</tr>
 		<tr>
 			<td>담당자명</td>
 			<td><input type="text" name="charger" 
 			value="<%=vo.getCharger()%>"/></td>
-			<!-- <td>
-			<input type="checkbox" name="hobby" value="read"/>독서
-			<input type="checkbox" name="hobby" value="game" checked="checked"/>게임
-			<input type="checkbox" name="hobby" value="fish" checked="checked"/>낚시
-			</td> -->
 		</tr>
 		<tr>
 			<td>담당자 연락처</td>
@@ -148,7 +136,7 @@ function frmGo(){
 		<tr>
 			<td>과거 프로젝트</td>
 			<td><input type="file" name="com_proj"
-			value="<%=vo.getCom_Proj()%>"></td>
+			value="<%=vo.getCom_proj()%>"></td>
 		</tr>
 		<tr>
 			<td colspan="2" align="center">

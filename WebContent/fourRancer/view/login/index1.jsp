@@ -18,7 +18,7 @@
 		<tr>
 			<td>id</td>
 			<td><input type="text" name="com_id" size="10" maxlength="8" />
-			<input type="button" name="sch" class="sch" value="id중복확인"/>
+			<!-- <input type="button" name="sch" class="sch" value="id중복확인"/> -->
 			</td>
 		</tr>
 		<tr>
@@ -28,11 +28,11 @@
 		</tr>
 		<tr>
 			<td>회사명</td>
-			<td><input type="text" name="com_Name" /></td>
+			<td><input type="text" name="com_name" /></td>
 		</tr>
 		<tr>
 			<td>창립일</td>
-				<td><input type="text" name="found_Day" />
+				<td><input type="text" name="found_day" />
 			</td>
 		</tr>
 		<tr>

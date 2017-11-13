@@ -9,10 +9,10 @@
 	CompanyVO vo = dao.detail(request.getParameter("com_id"));
 	request.setCharacterEncoding("EUC-KR");
 	
-	String nowUri = request.getRequestURI()/* .substring(
+	 String nowUri = request.getRequestURI().substring(
 			(request.getContextPath()+"/fourRancer/").length(),
 			request.getRequestURI().length()-4
-			) */;
+			) ; 
 	
 %>    
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
@@ -27,29 +27,29 @@
 	<tr>
 		<td>id</td><td><%=vo.getCom_id()%></td>
 	</tr><tr>
-		<td>기업명</td><td><%=vo.getCom_name()%></td>
+		<td>회사명</td><td><%=vo.getCom_name()%></td>
 	</tr><tr>
-		<td>창립일</td><td><%=vo.getFound_Day()%></td>
+		<td>창립일</td><td><%=vo.getFound_day()%></td>
 	</tr><tr>
 		<td>대표자</td><td><%=vo.getRepresent() %></td>
 	</tr><tr>
-		<td>사업자등록번호</td><td><%=vo.getEnroll_Num()%></td>
+		<td>사업자등록번호</td><td><%=vo.getEnroll_num()%></td>
 	</tr><tr>
 		<td>주요사업내용</td><td><%=vo.getInfo()%></td>
 	</tr><tr>
 		<td>담당자이름</td><td><%=vo.getCharger() %></td>
 	</tr><tr>
-		<td>담당자번호</td><td><%=vo.getChar_Phone() %></td>
+		<td>담당자번호</td><td><%=vo.getChar_phone() %></td>
 	</tr><tr>
-		<td>대표전화</td><td><%=vo.getCom_Phone()%></td>
+		<td>대표전화</td><td><%=vo.getCom_phone()%></td>
 	</tr><tr>
-		<td>주소</td><td><%=vo.getCom_Address()%></td>
+		<td>주소</td><td><%=vo.getCom_address()%></td>
 	</tr><tr>
-		<td>이메일</td><td><%=vo.getCom_Email() %></td>
+		<td>이메일</td><td><%=vo.getCom_email() %></td>
 	</tr><tr>
 		<td>홈페이지</td><td><%=vo.getHomepage()%></td>
 	</tr><tr>
-		<td>과거 프로젝트</td><td><%=vo.getCom_Proj()%></td>
+		<td>과거 프로젝트</td><td><%=vo.getCom_proj()%></td>
 	</tr><tr>
 		<td>로고</td><td><img src="fileUp/<%=vo.getLogo()%>" width="150" alt="나오냐"></td>
 	</tr>
